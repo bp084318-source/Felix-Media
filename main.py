@@ -7,6 +7,10 @@ app = FastAPI()
 SUPABASE_URL = os.getenv("https://xjjdmtsuyketghsckaqw.supabase.co")
 SUPABASE_KEY = os.getenv("sb_publishable_6d_r0lElEd-2wgYfZQT22A_gTuZN3z3")
 
+if not SUPABASE_URL or not SUPABASE_KEY:
+    raise Exception("ENV ERROR: Supabase config kosong!")
+
+
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 @app.get("/")
